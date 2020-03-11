@@ -7,7 +7,9 @@ const initialize = () => {
   HttpService.instance = instance;
 };
 
-const get = url => HttpService.instance.get(url).then(({ data }) => data);
+const get = url => {
+  return HttpService.instance.get(url).then(({ data }) => data);
+};
 const put = (url, data) =>
   HttpService.instance.put(url, data).then(({ data }) => data);
 const post = (url, data) =>
@@ -17,6 +19,7 @@ const HttpService = {
   get,
   put,
   post,
+  instance: null,
   initialize
 };
 

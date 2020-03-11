@@ -1,21 +1,35 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import "./styles.css";
+import CreateDragonButton from "./components/create-dragon-button";
+import { Creators as listDragonCreators } from "../../ducks/dragon";
+import Dragon from "./components/dragon";
+import Loader from "../../components/Loader-spinner";
 
-const DragonList = list => {
+const DragonList = ({ listDragons, loadDragons, loading }) => {
   useEffect(() => {
-    console.log("list", list);
+    loadDragons();
   }, []);
 
-  return (
-    <div style={{ height: 100, justifyContent: "space-between" }}>
-      <h2 style={{ color: "blue" }}>Lista</h2>;
-      <h2 style={{ color: "red" }}>Lista</h2>;<input name="dasdsa"></input>
-    </div>
+  return loading ? (
+    <Loader />
+  ) : (
+    <>
+      <CreateDragonButton />
+      {listDragons.map((item, index) => (
+        <Dragon key={index} id={item.id} name={item.name} type={item.type} />
+      ))}
+    </>
   );
 };
 
 const mapStateToProps = ({ dragonList }) => ({
-  list: dragonList.list
+  listDragons: dragonList.listDragons,
+  loading: dragonList.loading
 });
 
-export default connect(mapStateToProps)(DragonList);
+const mapDispatchToProps = {
+  loadDragons: listDragonCreators.loadDragons
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DragonList);

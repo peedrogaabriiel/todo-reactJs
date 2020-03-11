@@ -1,8 +1,6 @@
 import React from "react";
 import Form from "./components/form";
 
-const Login = () => {
-  return <Form />;
-};
+const CreateDragon = () => <Form />;
 
-export default Login;
+export default CreateDragon;
