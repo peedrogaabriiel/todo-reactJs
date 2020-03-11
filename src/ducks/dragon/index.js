@@ -4,7 +4,8 @@ const prefix = "dragon-list/";
 
 const Types = {
   SET_DRAGON: prefix + "SET_DRAGON",
-  SET_LOADING: prefix + "SET_LOADING"
+  SET_LOADING: prefix + "SET_LOADING",
+  SET_ADD_DRAGON: prefix + "SET_ADD_DRAGON"
 };
 
 const setLoading = loading => ({
@@ -17,6 +18,11 @@ const setDragon = listDragons => ({
   type: Types.SET_DRAGON
 });
 
+const addDragon = dragon => ({
+  payload: { dragon },
+  type: Types.SET_ADD_DRAGON
+});
+
 const loadDragons = () => async (dispatch, _) => {
   dispatch(setLoading(true));
   const data = await HttpService.get("/dragon");
@@ -25,15 +31,13 @@ const loadDragons = () => async (dispatch, _) => {
   return data;
 };
 
-const loadDragonId = id => async (dispatch, _) => {
-  const data = await HttpService.get(`/dragon/${id}`);
-
-  dispatch(setDragon(data));
-
-  return data;
+const CreateDragon = data => async (dispatch, _) => {
+  const response = await HttpService.post("/dragon", data);
+  dispatch(addDragon(data));
+  return response;
 };
 
-export const Creators = { loadDragons, setDragon, loadDragonId };
+export const Creators = { loadDragons, setDragon, CreateDragon };
 
 const initialState = {
   listDragons: [],
@@ -46,6 +50,11 @@ export default function reducer(state = initialState, action) {
       return { ...state, listDragons: action.payload.listDragons };
     case Types.SET_LOADING:
       return { ...state, loading: action.payload.loading };
+    case Types.SET_ADD_DRAGON:
+      const newDragon = action.payload.dragon;
+      const listDragons = state.listDragons;
+      console.log("LISTA DE DRAGÕES ADD DRAGON", listDragons);
+      return { ...state, listDragons: { ...listDragons, newDragon } };
     default:
       return state;
   }
