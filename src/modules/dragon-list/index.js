@@ -10,6 +10,7 @@ const DragonList = ({
   loading,
   listDragons,
   loadDragons,
+  authenticated,
   deleteDragonList
 }) => {
   useEffect(() => {
@@ -27,6 +28,7 @@ const DragonList = ({
           id={item.id}
           name={item.name}
           type={item.type}
+          authenticated={authenticated}
           deleteDragonList={deleteDragonList}
         />
       ))}
@@ -34,9 +36,10 @@ const DragonList = ({
   );
 };
 
-const mapStateToProps = ({ loadDragons }) => ({
+const mapStateToProps = ({ loadDragons, userAuth }) => ({
   listDragons: loadDragons.listDragons,
-  loading: loadDragons.loading
+  loading: loadDragons.loading,
+  authenticated: userAuth.authenticated
 });
 
 const mapDispatchToProps = {

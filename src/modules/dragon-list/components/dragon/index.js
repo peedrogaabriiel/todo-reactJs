@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
 
-const Dragon = ({ deleteDragonList, id, name, type }) => {
+const Dragon = ({ authenticated, deleteDragonList, id, name, type }) => {
   const deleDragonOfList = () => {
     deleteDragonList(id);
   };
@@ -26,9 +26,11 @@ const Dragon = ({ deleteDragonList, id, name, type }) => {
           <p>Tipo: {type}</p>
         </div>
         <Link to={`/dragon/${id}`}>Ver Detalhes</Link>
-        <button onClick={deleDragonOfList} className="delete">
-          Excluir
-        </button>
+        {authenticated ? (
+          <button onClick={deleDragonOfList} className="delete">
+            Excluir
+          </button>
+        ) : null}
       </article>
     </div>
   );

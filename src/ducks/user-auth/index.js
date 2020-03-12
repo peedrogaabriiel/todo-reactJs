@@ -18,7 +18,6 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case Types.SET_AUTHENTICATED:
-      console.log("IS AUTHENTICATED", action.payload.authenticated);
       return { ...state, authenticated: action.payload.authenticated };
     default:
       return state;
