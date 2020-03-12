@@ -1,16 +1,16 @@
 import React from "react";
-
-import { BrowserRouter, Switch, Redirect } from "react-router-dom";
-import DragonList from "../modules/dragon-list";
-import Login from "../modules/login";
-import DragonDetail from "../modules/dragon-details";
-import routesNames from "./routes-names";
-import CreateDragon from "../modules/create-dragon";
+import history from "./history";
 import AppRoute from "./app-route";
+import Login from "../modules/login";
+import routesNames from "./routes-names";
+import DragonList from "../modules/dragon-list";
 import DragonEdit from "../modules/dragon-edit";
+import CreateDragon from "../modules/create-dragon";
+import DragonDetail from "../modules/dragon-details";
+import { Redirect, Router as ReactRouter, Switch } from "react-router";
 
 const Routes = () => (
-  <BrowserRouter>
+  <ReactRouter history={history}>
     <Switch>
       <AppRoute exact path={routesNames.login} component={Login} />
       <AppRoute exact component={DragonList} path={routesNames.dragon} />
@@ -34,7 +34,7 @@ const Routes = () => (
       />
       <Redirect to="/login" />
     </Switch>
-  </BrowserRouter>
+  </ReactRouter>
 );
 
 export default Routes;

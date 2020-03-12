@@ -3,16 +3,23 @@ import NavigationService from "../../../../services/navigation-service";
 import routesNames from "../../../../router/routes-names";
 import "./styles.css";
 import { Link } from "react-router-dom";
+import ModalComponent from "../modal";
+import { Creators as userAuthCreators } from "../../../../ducks/user-auth";
+import { connect } from "react-redux";
 
-const Form = () => {
+const Form = ({ setAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submit = () => {
+  const [visible, setVisible] = useState(false);
+
+  const submit = e => {
     if (email === "pedro.daltoe@cwi.com" && password === "123456") {
+      setAuthenticated(true);
       NavigationService.push(routesNames.dragon);
     } else {
-      alert("Credenciais inválidas");
+      setVisible(true);
+      e.preventDefault();
     }
   };
 
@@ -22,6 +29,10 @@ const Form = () => {
 
   const onChangePassword = event => {
     setPassword(event.target.value);
+  };
+
+  const closeModal = () => {
+    setVisible(false);
   };
 
   return (
@@ -61,8 +72,17 @@ const Form = () => {
           </div>
         </form>
       </div>
+      <ModalComponent
+        visibleModal={visible}
+        closeModal={closeModal}
+        onClickBackdrop={closeModal}
+      />
     </div>
   );
 };
 
-export default Form;
+const mapDispatchToProps = {
+  setAuthenticated: userAuthCreators.setAuthenticated
+};
+
+export default connect(null, mapDispatchToProps)(Form);

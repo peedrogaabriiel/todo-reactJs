@@ -15,8 +15,11 @@ const put = (url, data) =>
 const post = (url, data) =>
   HttpService.instance.post(url, data).then(({ data }) => data);
 
+const del = url => HttpService.instance.delete(url);
+
 const HttpService = {
   get,
+  del,
   put,
   post,
   instance: null,

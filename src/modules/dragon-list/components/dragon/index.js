@@ -2,8 +2,10 @@ import React from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
 
-const Dragon = ({ id, name, type }) => {
-  const deleteDragon = () => alert("dragão deletado com sucesso");
+const Dragon = ({ deleteDragonList, id, name, type }) => {
+  const deleDragonOfList = () => {
+    deleteDragonList(id);
+  };
 
   const nameAndLastName = name => {
     const names = name.split(" ");
@@ -24,7 +26,7 @@ const Dragon = ({ id, name, type }) => {
           <p>Tipo: {type}</p>
         </div>
         <Link to={`/dragon/${id}`}>Ver Detalhes</Link>
-        <button onClick={deleteDragon} className="delete" to={`/dragon/${id}`}>
+        <button onClick={deleDragonOfList} className="delete">
           Excluir
         </button>
       </article>

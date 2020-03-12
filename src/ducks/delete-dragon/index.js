@@ -1,24 +1,31 @@
 import HttpService from "../../services";
+import { Creators as loadDragons } from "../load-dragons";
 
 const prefix = "delete-dragon/";
 
 const Types = {
-  SET_DELETE_DRAGON: prefix + ""
+  SET_DELETE_DRAGON: prefix + "SET_DELETE_DRAGON"
 };
 
-const deleDragon = dragon => ({
+const dragonDelete = dragon => ({
   payload: { dragon },
-  type: Types.SET_LOADING
+  type: Types.SET_DELETE_DRAGON
 });
 
-const deleteDragon = id => async (dispatch, _) => {
-  const response = await HttpService.delete(`/dragon${id}`);
-  dispatch(deleDragon(id));
+const deleteDragonList = id => async (dispatch, getState) => {
+  const filterDragon = getState().loadDragons.listDragons.filter(
+    item => item.id != id
+  );
+
+  dispatch(loadDragons.setDragon(filterDragon));
+
+  const response = await HttpService.del(`/dragon/${id}`);
+  dispatch(dragonDelete(id));
 
   return response;
 };
 
-export const Creators = { deleteDragon };
+export const Creators = { deleteDragonList };
 
 const initialState = {
   dragon: 0
