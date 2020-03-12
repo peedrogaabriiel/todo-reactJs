@@ -1,13 +1,12 @@
 .dragon-details {
-  max-width: 700px;
-  margin: 20px auto 0;
-  padding: 20px;
   background: #fff;
-  border-radius: 5px;
-  line-height: 1.5;
-  border-radius: 5px;
   border: 1px solid #ccc;
+  border-radius: 5px;
   box-shadow: 1px 1px 1px #999;
+  line-height: 1.5;
+  margin: 20px auto 0;
+  max-width: 700px;
+  padding: 20px;
 }
 
 .dragon-details h1 {

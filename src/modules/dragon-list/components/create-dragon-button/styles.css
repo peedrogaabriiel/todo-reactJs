@@ -1,25 +1,25 @@
 .create-dragon-button {
-  max-width: 700px;
-  margin: 20px auto 0;
-  padding: 0 20px;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  display: flex;
+  margin: 20px auto 0;
+  padding: 0 20px;
+  max-width: 700px;
 }
 
 .create-dragon-button h1 {
-  font-size: 25px;
   color: teal;
+  font-size: 25px;
   font-weight: bold;
 }
 
 .create-dragon-button a {
-  height: 30px;
-  border-radius: 5px;
   border: 2px;
+  border-radius: 5px;
   color: teal;
-  font-weight: bold;
   font-size: 18px;
+  font-weight: bold;
+  height: 30px;
   transition: all 0.5s;
 }
 

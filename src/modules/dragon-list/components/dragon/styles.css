@@ -1,48 +1,48 @@
 .dragon-list {
-  max-width: 700px;
   margin: 20px auto 0;
+  max-width: 700px;
   padding: 0 20px;
 }
 
 .dragon-list article {
   background: #fff;
-  line-height: 1.5;
-  border-radius: 5px;
   border: 1px solid #ccc;
+  border-radius: 5px;
   box-shadow: 1px 1px 1px #999;
-  padding: 20px;
-  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  padding: 20px;
 }
 
 .dragon-list article p {
-  font-size: 16px;
   color: #999999;
-  margin-top: 2px;
+  font-size: 16px;
   line-height: 24px;
-  width: 180px;
-  white-space: nowrap;
-  overflow: hidden;
+  margin-top: 2px;
   text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 180px;
 }
 
 .dragon-list article a {
-  height: 42px;
-  border-radius: 5px;
-  border: 2px;
-  background: none;
-  margin-top: 10px;
-  color: #69be41;
-  width: 20%;
-  font-weight: bold;
-  font-size: 16px;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background: none;
+  border: 2px;
+  border-radius: 5px;
+  color: #69be41;
+  display: flex;
+  height: 42px;
+  font-size: 16px;
+  font-weight: bold;
+  justify-content: center;
+  margin-top: 10px;
+  text-decoration: none;
   transition: all 0.2s;
+  width: 20%;
 }
 
 .dragon-list article a:hover {
@@ -51,20 +51,20 @@
 }
 
 .dragon-list article button {
-  height: 42px;
-  width: 20%;
-  border-radius: 5px;
-  border: 2px;
-  background: none;
-  margin-top: 10px;
-  color: #69be41;
-  font-weight: bold;
-  font-size: 16px;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background: none;
+  border: 2px;
+  border-radius: 5px;
+  color: #69be41;
+  display: flex;
+  font-size: 16px;
+  font-weight: bold;
+  height: 42px;
+  justify-content: center;
+  margin-top: 10px;
+  text-decoration: none;
   transition: all 0.2s;
+  width: 20%;
 }
 
 .dragon-list article button:hover {

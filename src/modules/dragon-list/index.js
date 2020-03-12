@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import "./styles.css";
 import CreateDragonButton from "./components/create-dragon-button";
 import { Creators as loadDragonCreators } from "../../ducks/load-dragons";
 import Dragon from "./components/dragon";

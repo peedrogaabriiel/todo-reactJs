@@ -9,7 +9,7 @@ import routesNames from "../../../../router/routes-names";
 import Loader from "../../../../components/Loader-spinner";
 
 const Form = ({ button, dragon, label, loading, createDragon, editDragon }) => {
-  const submit = e => {
+  const submit = () => {
     if (dragon) {
       editDragon({ ...form, id: dragon.id });
     } else {
