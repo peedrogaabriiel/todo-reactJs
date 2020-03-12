@@ -14,4 +14,47 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 1px 1px 1px #999;
+  line-height: 1.5;
+}
+.dragon-form article input {
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+}
+.dragon-form article textarea {
+  line-height: 1.5;
+  border-radius: 5px;
+  min-height: 100px;
+  max-height: 500px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+}
+.div-button {
+  justify-content: space-between;
+  flex-direction: row;
+  display: flex;
+  margin-top: 50px;
+}
+.dragon-form article button {
+  width: 45%;
+  font-weight: bold;
+  transition: all 1s;
+}
+.dragon-form article a {
+  font-weight: bold;
+  width: 45%;
+  transition: all 1s;
+}
+
+.dragon-form article button:hover {
+  color: #007bff;
+  font-weight: bold;
+  background: #fff;
+}
+.dragon-form article a:hover {
+  color: #007bff;
+  font-weight: bold;
+  background: #fff;
 }

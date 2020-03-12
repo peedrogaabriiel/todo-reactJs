@@ -6,8 +6,10 @@
 
 .dragon-list article {
   background: #fff;
-  border: 1px solid #ddd;
+  line-height: 1.5;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
   padding: 20px;
   margin-bottom: 20px;
   display: flex;
@@ -20,10 +22,37 @@
   color: #999999;
   margin-top: 2px;
   line-height: 24px;
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dragon-list article a {
   height: 42px;
+  border-radius: 5px;
+  border: 2px;
+  background: none;
+  margin-top: 10px;
+  color: #69be41;
+  width: 20%;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.dragon-list article a:hover {
+  background: #69be41;
+  color: #fff;
+}
+
+.dragon-list article button {
+  height: 42px;
+  width: 20%;
   border-radius: 5px;
   border: 2px;
   background: none;
@@ -38,7 +67,7 @@
   transition: all 0.2s;
 }
 
-.dragon-list article a:hover {
-  background: #69be41;
+.dragon-list article button:hover {
+  background: red;
   color: #fff;
 }

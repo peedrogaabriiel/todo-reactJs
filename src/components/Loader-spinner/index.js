@@ -2,10 +2,10 @@ import React from "react";
 import Loader from "react-loader-spinner";
 import "./styles.css";
 
-const LoaderSpinner = () => {
+const LoaderSpinner = ({ size }) => {
   return (
     <div className="create-spinner">
-      <Loader type="TailSpin" color="#69be41" height={100} width={100} />
+      <Loader type="TailSpin" color="#69be41" height={size} width={size} />
     </div>
   );
 };

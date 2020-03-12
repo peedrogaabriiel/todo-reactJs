@@ -1,42 +1,57 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { Creators as listDragonCreators } from "../../../../ducks/dragon";
-import { connect } from "react-redux";
+import { Creators as createDragonCreators } from "../../../../ducks/create-dragon";
+import { Creators as editDragonCreators } from "../../../../ducks/edit-dragon";
 
-const Form = ({ addDragon }) => {
-  const submit = () => {
-    const newDragon = { ...form, createDate: new Date() };
-    addDragon(newDragon);
+import { connect } from "react-redux";
+import NavigationService from "../../../../services/navigation-service";
+import routesNames from "../../../../router/routes-names";
+import Loader from "../../../../components/Loader-spinner";
+
+const Form = ({ button, dragon, label, loading, createDragon, editDragon }) => {
+  const submit = e => {
+    if (dragon) {
+      editDragon({ ...form, id: dragon.id });
+    } else {
+      const newDragon = { ...form, createDate: new Date() };
+      createDragon(newDragon);
+    }
+    NavigationService.push(routesNames.dragon);
   };
 
   const [form, setForm] = useState("");
 
   const formChange = field => event => {
+    console.log("filed: ", field);
+    console.log("event: ", event.target.value);
     switch (field) {
       case "name":
-        console.log("field name", field);
         setForm({ ...form, name: event.target.value });
         break;
-      case "tipo":
-        console.log("field tipo", field);
-        setForm({ ...form, tipo: event.target.value });
+      case "type":
+        setForm({ ...form, type: event.target.value });
         break;
+      case "histories":
+        setForm({ ...form, histories: event.target.value });
+        break;
+      default:
+        return;
     }
-
-    console.log("form doidao", form);
   };
 
   return (
     <div className="dragon-form">
       <article>
         <form onSubmit={submit} className="container">
-          <h3>Criar Dragão</h3>
+          <h3>{label}</h3>
 
           <div className="form-group">
             <label>Nome</label>
             <input
+              required
+              defaultValue={dragon?.name}
               className="form-control"
-              placeholder="Nome do Dragão"
+              placeholder={"Nome do Dragão"}
               onChange={formChange("name")}
             />
           </div>
@@ -44,27 +59,48 @@ const Form = ({ addDragon }) => {
           <div className="form-group">
             <label>Tipo</label>
             <input
+              required
               className="form-control"
+              defaultValue={dragon?.type}
               placeholder="Ex: Rapido, forte, poderes especiais"
-              onChange={formChange("tipo")}
+              onChange={formChange("type")}
             />
           </div>
           <div className="form-group">
             <label>Descrição</label>
-            <textarea className="form-control" />
+            <textarea
+              required
+              defaultValue={dragon?.histories}
+              onChange={formChange("histories")}
+              className="form-control"
+            />
           </div>
 
-          <button type="submit" className="btn btn-primary btn-block">
-            Salvar
-          </button>
+          <div className="div-button">
+            <a href="/dragon" className="btn btn-primary">
+              Voltar para listagem
+            </a>
+            {loading ? (
+              <Loader size={25} />
+            ) : (
+              <button type="submit" className="btn btn-primary">
+                {button}
+              </button>
+            )}
+          </div>
         </form>
       </article>
     </div>
   );
 };
 
+const mapStateToProps = ({ createDragon }) => ({
+  loading: createDragon.loading
+});
+
 const mapDispatchToProps = {
-  addDragon: listDragonCreators.addDragon
+  editDragon: editDragonCreators.editDragon,
+  createDragon: createDragonCreators.createDragon
 };
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

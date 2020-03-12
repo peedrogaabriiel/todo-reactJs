@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import NavigationService from "../../../../services/navigation-service";
 import routesNames from "../../../../router/routes-names";
+import "./styles.css";
+import { Link } from "react-router-dom";
 
 const Form = () => {
   const [email, setEmail] = useState("");
@@ -23,33 +25,9 @@ const Form = () => {
   };
 
   return (
-    <div
-      className="card bg-dark text-white"
-      style={{
-        background: "gray",
-        flex: 1,
-        height: "100%",
-        justifyContent: "center"
-      }}
-    >
-      <div
-        className="divForm"
-        style={{
-          background: "#69be41",
-          width: 600,
-          height: 300,
-          alignSelf: "center",
-          alignContent: "center",
-          borderRadius: 14
-        }}
-      >
-        <form
-          onSubmit={submit}
-          className="container"
-          style={{
-            width: 500
-          }}
-        >
+    <div className="card">
+      <div className="div">
+        <form onSubmit={submit} className="container">
           <h3>Login</h3>
 
           <div className="form-group">
@@ -73,10 +51,14 @@ const Form = () => {
               placeholder="Insira sua senha"
             />
           </div>
-
-          <button type="submit" className="btn btn-primary btn-block">
-            Entrar
-          </button>
+          <div className="div-buttons">
+            <Link to="/dragon" className="btn btn-primary">
+              Ver lista de dragões
+            </Link>
+            <button type="submit" className="btn btn-primary">
+              Entrar
+            </button>
+          </div>
         </form>
       </div>
     </div>

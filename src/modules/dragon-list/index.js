@@ -2,17 +2,17 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./styles.css";
 import CreateDragonButton from "./components/create-dragon-button";
-import { Creators as listDragonCreators } from "../../ducks/dragon";
+import { Creators as loadDragonCreators } from "../../ducks/load-dragons";
 import Dragon from "./components/dragon";
 import Loader from "../../components/Loader-spinner";
 
 const DragonList = ({ listDragons, loadDragons, loading }) => {
   useEffect(() => {
     loadDragons();
-  }, []);
+  }, [loadDragons]);
 
   return loading ? (
-    <Loader />
+    <Loader size={100} />
   ) : (
     <>
       <CreateDragonButton />
@@ -23,13 +23,13 @@ const DragonList = ({ listDragons, loadDragons, loading }) => {
   );
 };
 
-const mapStateToProps = ({ dragonList }) => ({
-  listDragons: dragonList.listDragons,
-  loading: dragonList.loading
+const mapStateToProps = ({ loadDragons }) => ({
+  listDragons: loadDragons.listDragons,
+  loading: loadDragons.loading
 });
 
 const mapDispatchToProps = {
-  loadDragons: listDragonCreators.loadDragons
+  loadDragons: loadDragonCreators.loadDragons
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DragonList);

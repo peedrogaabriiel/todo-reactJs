@@ -7,6 +7,7 @@ import DragonDetail from "../modules/dragon-details";
 import routesNames from "./routes-names";
 import CreateDragon from "../modules/create-dragon";
 import AppRoute from "./app-route";
+import DragonEdit from "../modules/dragon-edit";
 
 const Routes = () => (
   <BrowserRouter>
@@ -24,6 +25,12 @@ const Routes = () => (
         private
         component={CreateDragon}
         path={routesNames.createDragon}
+      />
+      <AppRoute
+        exact
+        private
+        component={DragonEdit}
+        path={routesNames.editDragon}
       />
       <Redirect to="/login" />
     </Switch>
