@@ -14,7 +14,6 @@ const editDragonInfos = dragon => ({
 const editDragon = dragon => async (dispatch, _) => {
   const response = await HttpService.put(`/dragon/${dragon.id}`, dragon);
   dispatch(editDragonInfos(response));
-  console.log("response, ", response);
   return response;
 };
 

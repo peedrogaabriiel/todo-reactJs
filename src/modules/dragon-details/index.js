@@ -3,7 +3,7 @@ import DragonDetailComponent from "./components";
 import { Creators as dragonIdCreators } from "../../ducks/dragon-id";
 import { connect } from "react-redux";
 
-const DragonDetail = ({ dragon, id, loadIdDragon, ...props }) => {
+const DragonDetail = ({ dragon, id, loading, loadIdDragon, ...props }) => {
   useEffect(() => {
     loadIdDragon(props.match.params.id);
   }, []);
@@ -11,6 +11,7 @@ const DragonDetail = ({ dragon, id, loadIdDragon, ...props }) => {
   return (
     <DragonDetailComponent
       id={dragon.id}
+      loading={loading}
       name={dragon.name}
       type={dragon.type}
       createdAt={dragon.createdAt}
@@ -20,7 +21,8 @@ const DragonDetail = ({ dragon, id, loadIdDragon, ...props }) => {
 };
 
 const mapStateToProps = ({ loadIdDragon }) => ({
-  dragon: loadIdDragon.dragon
+  dragon: loadIdDragon.dragon,
+  loading: loadIdDragon.loading
 });
 
 const mapDispatchToProps = {

@@ -22,8 +22,6 @@ const Form = ({ button, dragon, label, loading, createDragon, editDragon }) => {
   const [form, setForm] = useState("");
 
   const formChange = field => event => {
-    console.log("filed: ", field);
-    console.log("event: ", event.target.value);
     switch (field) {
       case "name":
         setForm({ ...form, name: event.target.value });
