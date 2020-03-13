@@ -12,7 +12,7 @@ const setAuthenticated = authenticated => ({
 export const Creators = { setAuthenticated };
 
 const initialState = {
-  authenticated: false
+  authenticated: true
 };
 
 export default function reducer(state = initialState, action) {

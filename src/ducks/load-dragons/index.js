@@ -20,6 +20,13 @@ const setDragon = listDragons => ({
 const loadDragons = () => async (dispatch, _) => {
   dispatch(setLoading(true));
   const data = await HttpService.get("/dragon");
+
+  data.sort(function(a, b) {
+    const x = a.name.toLowerCase();
+    const y = b.name.toLowerCase();
+    return x < y ? -1 : x > y ? 1 : 0;
+  });
+
   dispatch(setDragon(data));
   dispatch(setLoading(false));
   return data;

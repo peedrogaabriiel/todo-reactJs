@@ -1,10 +1,15 @@
 import React from "react";
 import Modal from "react-bootstrap4-modal";
 import { Link } from "react-router-dom";
+import "./styles.css";
 
 const ModalComponent = ({ visibleModal, onClickBackdrop, closeModal }) => {
   return (
-    <Modal visible={visibleModal} onClickBackdrop={onClickBackdrop}>
+    <Modal
+      className="modal"
+      visible={visibleModal}
+      onClickBackdrop={onClickBackdrop}
+    >
       <div className="modal-header">
         <h5 className="modal-title">Credenciais inválidas</h5>
       </div>

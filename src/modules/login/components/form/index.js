@@ -7,7 +7,7 @@ import ModalComponent from "../modal";
 import { Creators as userAuthCreators } from "../../../../ducks/user-auth";
 import { connect } from "react-redux";
 
-const Form = ({ setAuthenticated }) => {
+const Form = ({ setAuthenticated, authenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,6 +16,7 @@ const Form = ({ setAuthenticated }) => {
   const submit = e => {
     if (email === "pedro.daltoe@cwi.com" && password === "123456") {
       setAuthenticated(true);
+      localStorage.setItem("authenticated", authenticated);
       NavigationService.push(routesNames.dragon);
     } else {
       setVisible(true);
@@ -85,4 +86,7 @@ const mapDispatchToProps = {
   setAuthenticated: userAuthCreators.setAuthenticated
 };
 
-export default connect(null, mapDispatchToProps)(Form);
+const mapStateToProps = ({ userAuth }) => ({
+  authenticated: userAuth.authenticated
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

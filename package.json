@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "dayjs": "^1.8.22",
     "react": "^16.13.0",
     "react-bootstrap4-modal": "^1.7.4",
     "react-dom": "^16.13.0",

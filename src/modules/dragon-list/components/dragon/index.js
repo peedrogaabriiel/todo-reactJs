@@ -25,11 +25,13 @@ const Dragon = ({ authenticated, deleteDragonList, id, name, type }) => {
           <strong>Nome: {nameAndLastName(name)}</strong>
           <p>Tipo: {type}</p>
         </div>
-        <Link to={`/dragon/${id}`}>Ver Detalhes</Link>
         {authenticated ? (
-          <button onClick={deleDragonOfList} className="delete">
-            Excluir
-          </button>
+          <>
+            <Link to={`/dragon/${id}`}>Ver Detalhes</Link>
+            <button onClick={deleDragonOfList} className="delete">
+              Excluir
+            </button>
+          </>
         ) : null}
       </article>
     </div>

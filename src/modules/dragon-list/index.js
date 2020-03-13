@@ -21,7 +21,7 @@ const DragonList = ({
     <Loader size={100} />
   ) : (
     <>
-      <CreateDragonButton />
+      <CreateDragonButton authenticated={authenticated} />
       {listDragons.map((item, index) => (
         <Dragon
           key={index}
@@ -37,8 +37,8 @@ const DragonList = ({
 };
 
 const mapStateToProps = ({ loadDragons, userAuth }) => ({
-  listDragons: loadDragons.listDragons,
   loading: loadDragons.loading,
+  listDragons: loadDragons.listDragons,
   authenticated: userAuth.authenticated
 });
 
