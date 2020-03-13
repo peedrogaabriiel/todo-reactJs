@@ -28,6 +28,7 @@ const Dragon = ({ authenticated, deleteDragonList, id, name, type }) => {
         {authenticated ? (
           <>
             <Link to={`/dragon/${id}`}>Ver Detalhes</Link>
+            <Link to={`/edit-dragon/${id}`}>Editar dados</Link>
             <button onClick={deleDragonOfList} className="delete">
               Excluir
             </button>
