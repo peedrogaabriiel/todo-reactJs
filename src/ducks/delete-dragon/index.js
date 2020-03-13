@@ -14,7 +14,7 @@ const dragonDelete = dragon => ({
 
 const deleteDragonList = id => async (dispatch, getState) => {
   const filterDragon = getState().loadDragons.listDragons.filter(
-    item => item.id != id
+    item => item.id !== id
   );
 
   dispatch(loadDragons.setDragon(filterDragon));

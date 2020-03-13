@@ -1,5 +1,4 @@
 import HttpService from "../../services";
-import { Creators as loadDragons } from "../load-dragons";
 
 const prefix = "create-dragon/";
 
@@ -21,7 +20,6 @@ const setLoading = loading => ({
 const createDragon = data => async (dispatch, _) => {
   dispatch(setLoading(true));
   const response = await HttpService.post("/dragon", data);
-  dispatch(loadDragons.setDragon(data));
   dispatch(addDragon(data));
   dispatch(setLoading(false));
   return response;

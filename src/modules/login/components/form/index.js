@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import ModalComponent from "../modal";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import routesNames from "../../../../router/routes-names";
 import NavigationService from "../../../../services/navigation-service";
 import { Creators as userAuthCreators } from "../../../../ducks/user-auth";
 
-const Form = ({ setAuthenticated }) => {
+const Form = ({ setAuthenticated, authenticated }) => {
+  useEffect(() => {
+    if (authenticated) {
+      NavigationService.push(routesNames.dragon);
+    } else {
+      NavigationService.push(routesNames.login);
+    }
+  });
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -87,8 +94,12 @@ const Form = ({ setAuthenticated }) => {
   );
 };
 
+const mapStateToProps = ({ userAuth }) => ({
+  authenticated: userAuth.authenticated
+});
+
 const mapDispatchToProps = {
   setAuthenticated: userAuthCreators.setAuthenticated
 };
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
