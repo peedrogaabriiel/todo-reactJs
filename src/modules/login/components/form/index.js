@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import NavigationService from "../../../../services/navigation-service";
-import routesNames from "../../../../router/routes-names";
 import "./styles.css";
-import { Link } from "react-router-dom";
 import ModalComponent from "../modal";
-import { Creators as userAuthCreators } from "../../../../ducks/user-auth";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import routesNames from "../../../../router/routes-names";
+import NavigationService from "../../../../services/navigation-service";
+import { Creators as userAuthCreators } from "../../../../ducks/user-auth";
 
-const Form = ({ setAuthenticated, authenticated }) => {
+const Form = ({ setAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,7 +16,7 @@ const Form = ({ setAuthenticated, authenticated }) => {
   const submit = e => {
     if (email === "pedro.daltoe@cwi.com" && password === "123456") {
       setAuthenticated(true);
-      localStorage.setItem("authenticated", authenticated);
+      localStorage.setItem("authenticated", true);
       NavigationService.push(routesNames.dragon);
     } else {
       setVisible(true);
@@ -34,6 +34,11 @@ const Form = ({ setAuthenticated, authenticated }) => {
 
   const closeModal = () => {
     setVisible(false);
+  };
+
+  const seeList = () => {
+    localStorage.removeItem("authenticated");
+    NavigationService.push(routesNames.dragon);
   };
 
   return (
@@ -64,9 +69,9 @@ const Form = ({ setAuthenticated, authenticated }) => {
             />
           </div>
           <div className="div-buttons">
-            <Link to="/dragon" className="btn btn-primary">
+            <button onClick={seeList} className="btn btn-primary">
               Ver lista de dragões
-            </Link>
+            </button>
             <button type="submit" className="btn btn-primary">
               Entrar
             </button>
@@ -86,7 +91,4 @@ const mapDispatchToProps = {
   setAuthenticated: userAuthCreators.setAuthenticated
 };
 
-const mapStateToProps = ({ userAuth }) => ({
-  authenticated: userAuth.authenticated
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default connect(null, mapDispatchToProps)(Form);

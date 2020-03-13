@@ -12,7 +12,7 @@ const setAuthenticated = authenticated => ({
 export const Creators = { setAuthenticated };
 
 const initialState = {
-  authenticated: true
+  authenticated: localStorage.getItem("authenticated")
 };
 
 export default function reducer(state = initialState, action) {
