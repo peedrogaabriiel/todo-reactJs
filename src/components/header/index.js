@@ -2,8 +2,9 @@ import React from "react";
 import "./styles.css";
 import NavigationService from "../../services/navigation-service";
 import routesNames from "../../router/routes-names";
+import { connect } from "react-redux";
 
-const Header = () => {
+const Header = ({ authenticated }) => {
   const logout = () => {
     localStorage.removeItem("authenticated");
     NavigationService.push(routesNames.login);
@@ -13,13 +14,19 @@ const Header = () => {
   return (
     <nav className="navbar navbar-light bg-light">
       <span className="span">Dragons School</span>
-      <div className="div-inline my-2 my-lg-0">
-        <button className="button" onClick={logout}>
-          Sair
-        </button>
-      </div>
+      {authenticated ? (
+        <div className="div-inline my-2 my-lg-0">
+          <button className="button" onClick={logout}>
+            Sair
+          </button>
+        </div>
+      ) : null}
     </nav>
   );
 };
 
-export default Header;
+const mapStateToProps = ({ userAuth }) => ({
+  authenticated: userAuth.authenticated
+});
+
+export default connect(mapStateToProps)(Header);
