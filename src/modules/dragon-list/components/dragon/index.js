@@ -21,18 +21,18 @@ const Dragon = ({ authenticated, deleteDragonList, id, name, type }) => {
   return (
     <div className="dragon-list">
       <article>
-        <div>
+        <div className="div-row">
           <strong>Nome: {nameAndLastName(name)}</strong>
           <p>Tipo: {type}</p>
         </div>
         {authenticated ? (
-          <>
-            <Link to={`/dragon/${id}`}>Ver Detalhes</Link>
+          <div className="div-row-options">
+            <Link to={`/dragon/${id}`}>Ver detalhes</Link>
             <Link to={`/edit-dragon/${id}`}>Editar dados</Link>
             <button onClick={deleDragonOfList} className="delete">
               Excluir
             </button>
-          </>
+          </div>
         ) : null}
       </article>
     </div>
