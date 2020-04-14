@@ -21,7 +21,7 @@ const Form = ({ setAuthenticated, authenticated }) => {
   const [visible, setVisible] = useState(false);
 
   const submit = e => {
-    if (email === "pedro.daltoe@cwi.com" && password === "123456") {
+    if (email === "pedro.daltoe86@gmail.com" && password === "123456") {
       setAuthenticated(true);
       localStorage.setItem("authenticated", true);
       NavigationService.push(routesNames.dragon);
